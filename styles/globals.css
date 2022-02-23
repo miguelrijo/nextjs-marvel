@@ -1,0 +1,146 @@
+
+
+.character-container {
+  padding-left: 90px;
+  padding-right: 90px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:left;
+  background: black;
+
+}
+
+.character-container .character {
+  width: 180px;
+  height: 240px;
+  background-size: 180px 240px;
+  transition: all 2s ease;
+  -moz-transition: all 2s ease;
+  -ms-transition: all 2s ease;
+  -webkit-transition: all 2s ease;
+  -o-transition: all 2s ease;
+}
+
+
+.character-container .character:hover {
+  background-size:198px 264px;
+  background-position: center;
+  cursor: pointer;
+}
+
+.card_description {
+  font-weight: bold;
+  font-size: 18px;
+  flex-direction: column-reverse;
+  justify-content: center;
+  color:inherit;
+  text-align: center;
+  padding: 3px;
+  background-color: white;
+
+  height: fit-content;
+  width: 100%;
+}
+
+.character-container .MuiPaper-root {
+  margin: 10px 15px 10px 15px;
+  box-shadow: 0px 1px 2px 0px rgba(13, 157, 224, 0.945);
+}
+
+.character-container .MuiPaper-root:hover{
+  box-shadow: -1px 10px 29px 0px white;
+}
+
+body {
+  margin:0px;
+  background: black;
+}
+
+
+.character-details {
+  background-repeat: no-repeat;
+  background-size:300px 400px;
+  width: 300px;
+  height: 400px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: -1px 10px 29px 0px white;
+}
+
+
+.character-description {
+  width: 40%;
+  background-color: white;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  text-align: justify;
+  padding: 78px;
+  display: flex;
+  font-weight: bold;
+  font-family: fantasy;
+  flex-wrap: wrap;
+  align-items: center;
+  box-shadow: -1px 10px 29px 0px white;
+
+}
+
+.character-details-container {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  padding-top: 120px;
+  border-style:  solid blue 20px;
+  font-size: 22px;
+  text-align: center;
+}
+
+.character-details-container .card_description {
+  background-color: rgb(175, 204, 238);
+  border-top-left-radius: 20px;
+  box-shadow: -1px 10px 29px 0px white;
+  font-size: 20px;
+  height: 30px;
+}
+
+#back-button {
+  width: 100%;
+  display: flex;
+
+  justify-content: end;
+}
+
+.MuiButtonBase-root {
+  background-color: white;
+}
+
+#header {
+  display: flex;
+  justify-content: center;
+}
+
+.bottom-nav {
+  color: white;
+  justify-content: space-around;
+  display: flex;
+  padding: 35px 130px 35px 100px;
+  font-weight: bold;
+  font-family: fantasy;
+}
+
+
+.bottom-nav:hover {
+  cursor: pointer;
+}
+
+.bottom-nav div {
+  transition: all 2s ease;
+  -moz-transition: all 2s ease;
+  -ms-transition: all 2s ease;
+  -webkit-transition: all 2s ease;
+  -o-transition: all 2s ease;
+}
+
+
+.bottom-nav div:hover {
+  text-decoration: underline;
+}
