@@ -1,15 +1,16 @@
 import { GetStaticProps, GetStaticPropsResult } from "next/types";
 import { FunctionComponent } from "react";
-import { Card } from "@material-ui/core";
+import { Card, Grid, Box } from "@material-ui/core";
 import { callMarvel } from "../../utils";
 import router from "next/router";
+import Image from 'next/image';
 import { MARVEL_PATHS } from "../../contants";
 import { CharacterDTO, MarvelResponse } from "../../models-marvel";
 import { SimpleDataSetResponse } from "../../models";
 
 
 export const getStaticPaths = async () => {
-    const firstCall: MarvelResponse = await callMarvel<MarvelResponse>(MARVEL_PATHS.MARVER_CHARACTERS_PATH, new Map());;
+    const firstCall: MarvelResponse = await callMarvel<MarvelResponse>(MARVEL_PATHS.MARVER_CHARACTERS_PATH, new Map());
     const pages = Math.floor(firstCall.data.total / firstCall.data.limit);
     const paths = Array.from(Array(pages).keys()).map(id => ({ params: { page_id: id.toString() } }));
 
@@ -41,23 +42,25 @@ const Characters: FunctionComponent<SimpleDataSetResponse<CharacterDTO>> = (prop
     const currentPage: number = parseInt((props.pageNumber || "0"));
 
     const chararacterCards = props.items?.map(char =>
-        <div key={char.id}>
+        <Grid item key={char.id}>
             <Card >
-                <div onClick={() => router.push('../character/' + currentPage + "-" + char.id)} className="character" style={{ backgroundImage: `url(${char.thumbnail})` }}>
-                    <div className="card_description">{char.name}</div>
-                </div>
+                <Box onClick={() => router.push('../character/' + currentPage + "-" + char.id)} className="character" >
+                    <Box className="card_description">{char.name}</Box>
+                    <Image src={char.thumbnail} objectPosition='relative' layout='fill' />
+                </Box>
             </Card>
-        </div>
+        </Grid>
     );
 
     return (
-        <div>
-            <section className="character-container"> {chararacterCards}</section>
-            <section className="bottom-nav">
-                {currentPage > 0 && <div onClick={() => { router.push("" + (currentPage - 1)) }}>Previous Page</div>}
-                <div onClick={() => { router.push("" + (currentPage + 1)) }} >Next Page</div>
-            </section>
-        </div>
+        <Box>
+            <Grid container className="character-container">  {chararacterCards} </Grid>
+
+            <Box className="bottom-nav">
+                {currentPage > 0 && <Box onClick={() => { router.push("" + (currentPage - 1)) }}>Previous Page</Box>}
+                <Box onClick={() => { router.push("" + (currentPage + 1)) }} >Next Page</Box>
+            </Box>
+        </Box>
 
     );
 }

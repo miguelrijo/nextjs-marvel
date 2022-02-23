@@ -3,16 +3,12 @@
 .character-container {
   padding-left: 90px;
   padding-right: 90px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content:left;
-  background: black;
-
 }
 
 .character-container .character {
   width: 180px;
   height: 240px;
+  position: relative;
   background-size: 180px 240px;
   transition: all 2s ease;
   -moz-transition: all 2s ease;
@@ -37,9 +33,10 @@
   text-align: center;
   padding: 3px;
   background-color: white;
-
   height: fit-content;
   width: 100%;
+  position: absolute;
+  z-index: 1;
 }
 
 .character-container .MuiPaper-root {
@@ -100,6 +97,7 @@ body {
   box-shadow: -1px 10px 29px 0px white;
   font-size: 20px;
   height: 30px;
+  width: 294px; 
 }
 
 #back-button {
@@ -126,7 +124,6 @@ body {
   font-weight: bold;
   font-family: fantasy;
 }
-
 
 .bottom-nav:hover {
   cursor: pointer;

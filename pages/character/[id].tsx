@@ -2,10 +2,11 @@ import { GetServerSideProps } from "next";
 import React, { FunctionComponent } from "react";
 import { MARVEL_PATHS } from "../../contants";
 import { callMarvel } from "../../utils";
-import { Button } from "@material-ui/core";
+import { Box, Button } from "@material-ui/core";
 import router from "next/router";
 import { CharacterDTO, MarvelResponse } from "../../models-marvel";
 import { SimpleDataEntityResponse } from "../../models";
+import Image from 'next/image';
 
 
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
@@ -37,12 +38,14 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 
 const CharacterDetails: FunctionComponent<SimpleDataEntityResponse<CharacterDTO>> = (props: SimpleDataEntityResponse<CharacterDTO>) => {
     const character: CharacterDTO = props.entity;
-    const descriptionNotFound: string = " This character is so mysterious that it doesn't have any description available.";
+    const descriptionNotFound: string = "This character is so mysterious that it doesn't have any description available.";
     return (
-        <div className="character-details-container">
-            <div className="character-details" style={{ backgroundImage: `url(${character.thumbnail})` }}>  <div className="card_description">{character.name}</div></div>
-            <div className="character-description"> <div>{character.description ? character.description : descriptionNotFound} </div> <div id="back-button"><Button onClick={() => router.push('../characters/' + props.pageNumber)} variant="text">Go back</Button></div></div>
-        </div>
+        <Box className="character-details-container">
+            <Box className="character-details" style={{ backgroundImage: `url(${character.thumbnail})`, position:'relative' }}> 
+            <Image src={character.thumbnail} objectPosition='relative' layout='fill' />
+             <Box className="card_description">{character.name}</Box></Box>
+            <Box className="character-description"> <Box>{character.description ? character.description : descriptionNotFound} </Box> <Box id="back-button"><Button onClick={() => router.push('../characters/' + props.pageNumber)} variant="text">Go back</Button></Box></Box>
+        </Box>
 
     );
 }

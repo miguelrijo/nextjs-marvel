@@ -1,14 +1,17 @@
+import { Box } from "@material-ui/core";
 import React, { FunctionComponent } from "react";
 import Header from "./Header";
 
 const PageLayout: FunctionComponent = (props) => {
-    console.log(props);
 
-    return <div>  
-        <Header/>
-        {props.children} 
-        
-        </div>
+
+    return (
+        <Box>
+            <Header />
+            {props.children}
+        </Box>
+    )
+
 }
 
 export default PageLayout;
